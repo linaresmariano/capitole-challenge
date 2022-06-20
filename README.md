@@ -2,7 +2,7 @@
 
 ## Tests
 
-En la clase InterviewApplicationTest.java se prueban los casos pedidos en la consigna
+En la clase **InterviewApplicationTest.java** se prueban los casos pedidos en la consigna
 
 * Test 1: petición a las 10:00 del día 14 del producto 35455   para la brand 1 (ZARA)
 * Test 2: petición a las 16:00 del día 14 del producto 35455   para la brand 1 (ZARA)
@@ -11,7 +11,7 @@ En la clase InterviewApplicationTest.java se prueban los casos pedidos en la con
 * Test 5: petición a las 21:00 del día 16 del producto 35455   para la brand 1 (ZARA)
 
 
-Para el escenario planteado, me resultó interesante probar los siguientes casos borde en PriceRepositoryTest.java
+Para el escenario planteado, me resultó interesante probar los siguientes casos borde en **PriceRepositoryTest.java**
 
 * antes del 13/6/20 a las 23:59 y despues del 1/1/21 a las 00, no hay precio
 * el 14/6 entre las 00 a las 14:59, el precio es 35.50 porque aplica el id 1
