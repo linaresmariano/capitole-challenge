@@ -45,13 +45,13 @@ Para el escenario planteado, me resultó interesante probar los siguientes casos
 
 * **Valid Price** : `GET /ms-pricing/prices/valid`
 
-###Parámetros requeridos:
+### Parámetros requeridos:
 
 * **applicationDate:** fecha en formate ISO (ej: 2020-06-14T15:00:00)
 * **productId:** ID del producto
 * **brandId:** ID de la cadena
 
-###Respuestas:
+### Respuestas:
 
 * **200 - OK**: Cuando se encuentra un Precio vigente
 * **204 - No Content**: Cuando se encuentra un Precio vigente
