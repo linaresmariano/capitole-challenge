@@ -51,10 +51,10 @@ Para el escenario planteado, me resultó interesante probar los siguientes casos
 * **productId:** ID del producto
 * **brandId:** ID de la cadena
 
-### Respuestas:
+### Respuestas esperadas:
 
 * **200 - OK**: Cuando se encuentra un Precio vigente
-* **204 - No Content**: Cuando se encuentra un Precio vigente
+* **204 - No Content**: Cuando NO se encuentra un Precio vigente
 * **400 - Bad Request**: Cuando hay parámetros incorrectos
 * **500 - Internal Server Error**: Ante cualquier otro error inesperado
 
