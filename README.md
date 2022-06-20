@@ -27,17 +27,26 @@ Para el escenario planteado, me resultó interesante probar los siguientes casos
 
 [Colección postman](https://www.getpostman.com/collections/681b60d69f842c4dcd05) para probar los endpoints principales
 
+### Checkear status del servicio
 
-Home: ms-pricing/
-Ping: ms-pricing/ping
-Find One: ms-pricing/prices/1
+* **Home**: `GET /ms-pricing/`
+* **Ping**: `GET /ms-pricing/ping`
 
-Valid Price: ms-pricing/prices/valid
-	Atributos requeridos:
 
-* applicationDate: fecha en formate ISO (ej: 2020-06-14T15:00:00)
-* productId: ID del producto
-* brandId: ID de la cadena
+### Buscar un precio específico
+
+* **Find One** : `GET /ms-pricing/prices/:id`
+
+
+### Buscar precio vigente
+
+* **Valid Price** : `GET /ms-pricing/prices/valid`
+
+Atributos requeridos:
+
+* **applicationDate:** fecha en formate ISO (ej: 2020-06-14T15:00:00)
+* **productId:** ID del producto
+* **brandId:** ID de la cadena
 
 
 
