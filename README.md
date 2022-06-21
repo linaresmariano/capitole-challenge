@@ -1,5 +1,18 @@
 # Capitole Inditex Interview
 
+## Servicio
+
+Este servicio se utiliza para consultar el precio vigente para una fecha dada, para una cadena y un producto específico
+
+
+## Buenas prácticas
+
+El servicio cuenta con más del 99% de coverage.
+Analizado con SonarLint para evitar bugs, code smells, código duplicado.
+
+Es buena práctica usar estas herramientas para garantizar la estabilidad y confiabilidad del servicio, haciéndolo más extensible y modificable por otros desarrolladores.
+
+
 ## Tests
 
 En la clase **InterviewApplicationTest.java** se prueban los casos pedidos en la consigna

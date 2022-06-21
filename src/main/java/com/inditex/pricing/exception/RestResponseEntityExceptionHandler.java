@@ -20,9 +20,6 @@ public class RestResponseEntityExceptionHandler {
 
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 
-	private static final String INVALID_REQUEST_PARAM = " field with errors";
-	private static final String INTERNAL_ERROR = "Internal error";
-
 	
 	@ExceptionHandler(PriceNotFoundException.class)
 	protected ResponseEntity<Object> handlePriceNotFoundException(PriceNotFoundException ex, WebRequest request) {
@@ -36,7 +33,7 @@ public class RestResponseEntityExceptionHandler {
 
 		APIErrorResponse apiError = APIErrorResponse.builder()
 				.status(MsInfoUtil.buildStatusString(HttpStatus.BAD_REQUEST))
-				.message(ex.getErrorCount() + INVALID_REQUEST_PARAM)
+				.message(ex.getErrorCount() + " field with errors")
 				.errors(MsInfoUtil.buildFieldErrorMessage(ex))
 				.timestamp(MsInfoUtil.getActualDateTime())
 				.path(MsInfoUtil.getPath(request))
@@ -53,7 +50,7 @@ public class RestResponseEntityExceptionHandler {
 
 		APIErrorResponse apiError = APIErrorResponse.builder()
 				.status(MsInfoUtil.buildStatusString(HttpStatus.INTERNAL_SERVER_ERROR))
-				.message(INTERNAL_ERROR)
+				.message("Internal error")
 				.errors(Arrays.asList("Se ha producido un error, intente nuevamente en unos minutos"))
 				.timestamp(MsInfoUtil.getActualDateTime())
 				.path(MsInfoUtil.getPath(request))
