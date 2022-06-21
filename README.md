@@ -5,9 +5,24 @@
 Este servicio se utiliza para consultar el precio vigente para una fecha dada, para una cadena y un producto específico
 
 
+## Diseño
+
+Para el diseño del servicio me enfoqué principalmente en la Arquitectura, dejando las bases principales para un servicio completo.
+
+HomeController: para checkear si el servicio se encuentra activo,
+PriceController: API para consumir los endpoints principales del servicio
+RestResponseEntityExceptionHandler: el ControllerAdvice para manejar excepciones
+
+La estructura de paquetes, donde queda organizada cada capa de la arquitectura en distintos niveles: controller, service, repository, model, dto
+
+Por otro lado, el servicio cuenta con más del 99% de coverage, con tests de integración, tests unitarios de servicios y de repositories jpa.
+
+Todas estas bases son importantes para tomar de ejemplo al momento de extender este servicio, teniendo ejemplos concretos y claros donde ubicar cada componente y como testearlos.
+
+
+
 ## Buenas prácticas
 
-El servicio cuenta con más del 99% de coverage.
 Analizado con SonarLint para evitar bugs, code smells, código duplicado.
 
 Es buena práctica usar estas herramientas para garantizar la estabilidad y confiabilidad del servicio, haciéndolo más extensible y modificable por otros desarrolladores.
