@@ -3,9 +3,9 @@ package com.inditex.pricing.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
@@ -17,11 +17,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.inditex.pricing.exception.RestResponseEntityExceptionHandler;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-
 @EnableWebMvc
-@RunWith(JUnitParamsRunner.class)
 public class HomeControllerTest {
 
 	private MockMvc mockMvc;
@@ -29,7 +25,7 @@ public class HomeControllerTest {
 	@InjectMocks
 	private HomeController homeController;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		MockitoAnnotations.openMocks(this);
 
@@ -44,9 +40,9 @@ public class HomeControllerTest {
 				new Object[] { "/", "Hello from Inditex Pricing Home" }, };
 	}
 
-	@Test
-	@Parameters(method = "data")
-	public void whenHomeIsOk(String url, String resultTest) throws Exception {
+	@ParameterizedTest
+	@MethodSource("data")
+	void whenHomeIsOk(String url, String resultTest) throws Exception {
 		MvcResult result = mockMvc
 			.perform(MockMvcRequestBuilders.get(url))
 			.andExpect(status().is(HttpStatus.OK.value()))

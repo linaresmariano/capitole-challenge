@@ -4,30 +4,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.inditex.pricing.InditexPricingApplication;
 import com.inditex.pricing.dto.PriceDTO;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = InditexPricingApplication.class,
-	webEnvironment = WebEnvironment.RANDOM_PORT)
-//@Sql({ "classpath:data.sql" })
-public class FindValidPriceIntegrationTest {
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+class FindValidPriceIntegrationTest {
 	
-	protected final Logger log = LoggerFactory.getLogger(getClass());
-
 	@LocalServerPort
 	private int port;
 	
@@ -43,7 +36,7 @@ public class FindValidPriceIntegrationTest {
 		return "http://localhost:" + port + "/ms-pricing/prices/valid";
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		urlTemplate = UriComponentsBuilder.fromHttpUrl(getURLBase())
 				.queryParam("applicationDate", "{applicationDate}")
@@ -63,12 +56,12 @@ public class FindValidPriceIntegrationTest {
 	}
 	
 	@Test
-	public void testFindPriceByTest() {
+	void testFindPriceByTest() {
 		this.assertIsExpectedPrice("2020-06-14T00:00:00", 1L);
 	}
 	
 	@Test
-	public void testFindPriceByTest2() {
+	void testFindPriceByTest2() {
 		this.assertIsExpectedPrice("2020-06-14T15:00:00", 2L);
 	}
 	
