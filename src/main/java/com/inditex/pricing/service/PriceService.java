@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.inditex.pricing.dto.PriceDTO;
 import com.inditex.pricing.dto.PriceRequest;
+import com.inditex.pricing.dto.PriceWithQuantityRequest;
 import com.inditex.pricing.exception.PriceNotFoundException;
 import com.inditex.pricing.model.Price;
 import com.inditex.pricing.repository.PriceRepository;
@@ -44,6 +45,22 @@ public class PriceService implements IPriceService {
 				.orElseThrow(PriceNotFoundException::new);
 		
 		return mapper.map(price, PriceDTO.class);
+	}
+
+	@Override
+	public PriceDTO findValidWithQuantity(PriceWithQuantityRequest priceRequest) {
+		PriceDTO priceDto = this.findValid(priceRequest);
+		
+		log.info("QUANTITY recieve: {}", priceRequest.getQuantity());
+		
+		Double newValue = priceDto.getValue() * priceRequest.getQuantity();
+		
+//		DecimalFormat df = new DecimalFormat("####0.00");
+//		System.out.println("Value: " + df.format(value));
+		
+		priceDto.setValue((Math.round(newValue * 100d) / 100d));
+		
+		return priceDto;
 	}
 	
 }

@@ -39,7 +39,7 @@ public class RestResponseEntityExceptionHandler {
 				.path(MsInfoUtil.getPath(request))
 				.build();
 
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		
 	}
 

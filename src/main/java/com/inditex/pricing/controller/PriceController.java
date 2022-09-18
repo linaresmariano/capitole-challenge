@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inditex.pricing.dto.PriceDTO;
 import com.inditex.pricing.dto.PriceRequest;
+import com.inditex.pricing.dto.PriceWithQuantityRequest;
 import com.inditex.pricing.service.interfaces.IPriceService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,11 @@ public class PriceController {
 	@GetMapping("/valid")
 	public ResponseEntity<PriceDTO> find(@Valid PriceRequest priceRequest) {
 		return ResponseEntity.ok(priceService.findValid(priceRequest));
+	}
+	
+	@GetMapping("/validWithQuantity")
+	public ResponseEntity<PriceDTO> findWithQuantity(@Valid PriceWithQuantityRequest priceRequest) {
+		return ResponseEntity.ok(priceService.findValidWithQuantity(priceRequest));
 	}
 	
 	@GetMapping("/{id}")
